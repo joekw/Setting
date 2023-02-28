@@ -23,7 +23,7 @@ public struct SettingToggle: View, Setting {
     public init(
         id: AnyHashable? = nil,
         title: String,
-        isEnabled: Binding<Bool>,
+        isEnabled: Binding<Bool> = .constant(true),
         isOn: Binding<Bool>,
         horizontalSpacing: CGFloat = CGFloat(12),
         verticalPadding: CGFloat = CGFloat(14),

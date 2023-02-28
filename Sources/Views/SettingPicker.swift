@@ -25,7 +25,7 @@ public struct SettingPicker: View, Setting {
     public init(
         id: AnyHashable? = nil,
         title: String,
-        isEnabled: Binding<Bool>,
+        isEnabled: Binding<Bool> = .constant(true),
         choices: [String],
         selectedIndex: Binding<Int>,
         horizontalSpacing: CGFloat = CGFloat(12),
