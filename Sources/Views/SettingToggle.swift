@@ -19,6 +19,7 @@ public struct SettingToggle: View, Setting {
     public var verticalPadding = CGFloat(14)
     public var horizontalPadding = CGFloat(16)
     @Binding public var isEnabled: Bool
+    private var onTapIfDisabled: (() -> Void)?
 
     public init(
         id: AnyHashable? = nil,
@@ -27,7 +28,8 @@ public struct SettingToggle: View, Setting {
         isOn: Binding<Bool>,
         horizontalSpacing: CGFloat = CGFloat(12),
         verticalPadding: CGFloat = CGFloat(14),
-        horizontalPadding: CGFloat = CGFloat(16)
+        horizontalPadding: CGFloat = CGFloat(16),
+        onTapIfDisabled: (() -> Void)? = nil
     ) {
         self.id = id
         self.title = title
@@ -36,6 +38,7 @@ public struct SettingToggle: View, Setting {
         self.horizontalSpacing = horizontalSpacing
         self.verticalPadding = verticalPadding
         self.horizontalPadding = horizontalPadding
+        self.onTapIfDisabled = onTapIfDisabled
     }
 
     public var body: some View {
@@ -45,7 +48,13 @@ public struct SettingToggle: View, Setting {
             horizontalSpacing: horizontalSpacing,
             verticalPadding: verticalPadding,
             horizontalPadding: horizontalPadding
-        ).disabled(!isEnabled)
+        )
+        .disabled(!isEnabled)
+        .onTapGesture {
+            if !isEnabled {
+                onTapIfDisabled?()
+            }
+        }
     }
 }
 
