@@ -20,10 +20,12 @@ public struct SettingPicker: View, Setting {
     public var verticalPadding = CGFloat(14)
     public var horizontalPadding = CGFloat(16)
     public var choicesConfiguration = ChoicesConfiguration()
+    public var isEnabled: Bool
 
     public init(
         id: AnyHashable? = nil,
         title: String,
+        isEnabled: Bool = true,
         choices: [String],
         selectedIndex: Binding<Int>,
         horizontalSpacing: CGFloat = CGFloat(12),
@@ -33,6 +35,7 @@ public struct SettingPicker: View, Setting {
     ) {
         self.id = id
         self.title = title
+        self.isEnabled = isEnabled
         self.choices = choices
         self._selectedIndex = selectedIndex
         self.horizontalSpacing = horizontalSpacing
@@ -99,7 +102,7 @@ public struct SettingPicker: View, Setting {
             verticalPadding: verticalPadding,
             horizontalPadding: horizontalPadding,
             choicesConfiguration: choicesConfiguration
-        )
+        ).disabled(!isEnabled)
     }
 }
 
