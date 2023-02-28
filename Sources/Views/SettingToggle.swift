@@ -18,10 +18,12 @@ public struct SettingToggle: View, Setting {
     public var horizontalSpacing = CGFloat(12)
     public var verticalPadding = CGFloat(14)
     public var horizontalPadding = CGFloat(16)
+    @Binding public var isEnabled: Bool
 
     public init(
         id: AnyHashable? = nil,
         title: String,
+        isEnabled: Binding<Bool>,
         isOn: Binding<Bool>,
         horizontalSpacing: CGFloat = CGFloat(12),
         verticalPadding: CGFloat = CGFloat(14),
@@ -30,6 +32,7 @@ public struct SettingToggle: View, Setting {
         self.id = id
         self.title = title
         self._isOn = isOn
+        self._isEnabled = isEnabled
         self.horizontalSpacing = horizontalSpacing
         self.verticalPadding = verticalPadding
         self.horizontalPadding = horizontalPadding
@@ -42,7 +45,7 @@ public struct SettingToggle: View, Setting {
             horizontalSpacing: horizontalSpacing,
             verticalPadding: verticalPadding,
             horizontalPadding: horizontalPadding
-        )
+        ).disabled(!isEnabled)
     }
 }
 
