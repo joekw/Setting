@@ -21,6 +21,7 @@ public struct SettingPicker: View, Setting {
     public var horizontalPadding = CGFloat(16)
     public var choicesConfiguration = ChoicesConfiguration()
     @Binding public var isEnabled: Bool
+    private var onTapIfDisabled: (() -> Void)?
 
     public init(
         id: AnyHashable? = nil,
@@ -31,7 +32,8 @@ public struct SettingPicker: View, Setting {
         horizontalSpacing: CGFloat = CGFloat(12),
         verticalPadding: CGFloat = CGFloat(14),
         horizontalPadding: CGFloat = CGFloat(16),
-        choicesConfiguration: ChoicesConfiguration = ChoicesConfiguration()
+        choicesConfiguration: ChoicesConfiguration = ChoicesConfiguration(),
+        onTapIfDisabled: (() -> Void)? = nil
     ) {
         self.id = id
         self.title = title
@@ -42,6 +44,7 @@ public struct SettingPicker: View, Setting {
         self.verticalPadding = verticalPadding
         self.horizontalPadding = horizontalPadding
         self.choicesConfiguration = choicesConfiguration
+        self.onTapIfDisabled = onTapIfDisabled
     }
 
     public enum PickerDisplayMode {
@@ -102,7 +105,13 @@ public struct SettingPicker: View, Setting {
             verticalPadding: verticalPadding,
             horizontalPadding: horizontalPadding,
             choicesConfiguration: choicesConfiguration
-        ).disabled(!isEnabled)
+        )
+        .disabled(!isEnabled)
+        .onTapGesture {
+            if !isEnabled {
+                onTapIfDisabled?()
+            }
+        }
     }
 }
 
