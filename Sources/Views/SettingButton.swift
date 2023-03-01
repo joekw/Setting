@@ -18,6 +18,7 @@ public struct SettingButton: View, Setting {
     public var horizontalSpacing = CGFloat(12)
     public var verticalPadding = CGFloat(14)
     public var horizontalPadding = CGFloat(16)
+    public var icon: SettingIcon?
     public var action: () -> Void
 
     public init(
@@ -27,6 +28,7 @@ public struct SettingButton: View, Setting {
         horizontalSpacing: CGFloat = CGFloat(12),
         verticalPadding: CGFloat = CGFloat(14),
         horizontalPadding: CGFloat = CGFloat(16),
+        icon: SettingIcon? = nil,
         action: @escaping () -> Void
     ) {
         self.id = id
@@ -35,12 +37,14 @@ public struct SettingButton: View, Setting {
         self.horizontalSpacing = horizontalSpacing
         self.verticalPadding = verticalPadding
         self.horizontalPadding = horizontalPadding
+        self.icon = icon
         self.action = action
     }
 
     public var body: some View {
         SettingButtonView(
             title: title,
+            icon: icon,
             indicator: indicator,
             horizontalSpacing: horizontalSpacing,
             verticalPadding: verticalPadding,
@@ -52,6 +56,7 @@ public struct SettingButton: View, Setting {
 
 struct SettingButtonView: View {
     let title: String
+    var icon: SettingIcon?
     var indicator: String? = "arrow.up.forward"
     var horizontalSpacing = CGFloat(12)
     var verticalPadding = CGFloat(14)
@@ -61,6 +66,10 @@ struct SettingButtonView: View {
     var body: some View {
         Button(action: action) {
             HStack(spacing: horizontalSpacing) {
+                if let icon {
+                    SettingIconView(icon: icon)
+                }
+
                 Text(title)
                     .fixedSize(horizontal: false, vertical: true)
                     .frame(maxWidth: .infinity, alignment: .leading)
