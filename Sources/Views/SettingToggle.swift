@@ -50,6 +50,7 @@ public struct SettingToggle: View, Setting {
             horizontalPadding: horizontalPadding
         )
         .disabled(!isEnabled)
+        .contentShape(Rectangle())
         .onTapGesture {
             if !isEnabled {
                 onTapIfDisabled?()

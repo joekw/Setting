@@ -107,6 +107,7 @@ public struct SettingPicker: View, Setting {
             choicesConfiguration: choicesConfiguration
         )
         .disabled(!isEnabled)
+        .contentShape(Rectangle())
         .onTapGesture {
             if !isEnabled {
                 onTapIfDisabled?()
