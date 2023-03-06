@@ -15,6 +15,7 @@ public struct SettingButton: View, Setting {
     public var id: AnyHashable?
     public var title: String
     public var indicator: String? = "arrow.up.forward"
+    public var indicatorColor: Color = SettingTheme.secondaryLabelColor
     public var horizontalSpacing = CGFloat(12)
     public var verticalPadding = CGFloat(14)
     public var horizontalPadding = CGFloat(16)
@@ -25,6 +26,7 @@ public struct SettingButton: View, Setting {
         id: AnyHashable? = nil,
         title: String,
         indicator: String? = "arrow.up.forward",
+        indicatorColor: Color = SettingTheme.secondaryLabelColor,
         horizontalSpacing: CGFloat = CGFloat(12),
         verticalPadding: CGFloat = CGFloat(14),
         horizontalPadding: CGFloat = CGFloat(16),
@@ -34,6 +36,7 @@ public struct SettingButton: View, Setting {
         self.id = id
         self.title = title
         self.indicator = indicator
+        self.indicatorColor = indicatorColor
         self.horizontalSpacing = horizontalSpacing
         self.verticalPadding = verticalPadding
         self.horizontalPadding = horizontalPadding
@@ -46,6 +49,7 @@ public struct SettingButton: View, Setting {
             title: title,
             icon: icon,
             indicator: indicator,
+            indicatorColor: indicatorColor,
             horizontalSpacing: horizontalSpacing,
             verticalPadding: verticalPadding,
             horizontalPadding: horizontalPadding,
@@ -58,6 +62,7 @@ struct SettingButtonView: View {
     let title: String
     var icon: SettingIcon?
     var indicator: String? = "arrow.up.forward"
+    var indicatorColor: Color = SettingTheme.secondaryLabelColor
     var horizontalSpacing = CGFloat(12)
     var verticalPadding = CGFloat(14)
     var horizontalPadding = CGFloat(16)
@@ -77,7 +82,7 @@ struct SettingButtonView: View {
 
                 if let indicator {
                     Image(systemName: indicator)
-                        .foregroundColor(SettingTheme.secondaryLabelColor)
+                        .foregroundColor(indicatorColor)
                 }
             }
             .padding(.horizontal, horizontalPadding)
