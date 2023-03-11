@@ -49,6 +49,8 @@ public struct SettingStack: View {
         if #available(iOS 16.0, macOS 13.0, *) {
             NavigationStack {
                 main
+            }.toolbar {
+                toolbarContent()
             }
         } else {
             NavigationView {
@@ -88,6 +90,16 @@ public struct SettingStack: View {
         .onReceive(settingViewModel.regeneratePaths) { _ in
             let paths = settingPage.generatePaths()
             settingViewModel.paths = paths
+        }
+    }
+
+    @ToolbarContentBuilder
+    func toolbarContent() -> some ToolbarContent {
+        ToolbarItem(placement: .principal) {
+            Text("Hi")
+        }
+        ToolbarItem(placement: .navigationBarTrailing) {
+            Text("Ho")
         }
     }
 }
