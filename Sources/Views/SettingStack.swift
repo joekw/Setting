@@ -11,6 +11,9 @@ import SwiftUI
  The main view for settings. Everything else goes in here.
  */
 public struct SettingStack: View {
+
+    @Environment(\.dismiss) var dismiss
+
     /**
      The main page to display.
      */
@@ -23,12 +26,15 @@ public struct SettingStack: View {
      */
     public var customNoResultsView: AnyView?
 
+    public var showCloseButton: Bool = false
+
     @StateObject var settingViewModel = SettingViewModel()
 
     /**
      Create a new Settings view from a `SettingPage`. The default "no results" view will be used.
      */
-    public init(page: @escaping () -> SettingPage) {
+    public init(showCloseButton: Bool = false, page: @escaping () -> SettingPage) {
+        self.showCloseButton = showCloseButton
         self.page = page
     }
 
@@ -50,7 +56,15 @@ public struct SettingStack: View {
             NavigationStack {
                 main
                 .toolbar {
-                    toolbarContent()
+                    if showCloseButton {
+                        ToolbarItem(placement: .cancellationAction) {
+                            Button(action: {
+                                dismiss()
+                            }, label: {
+                                Image(systemName: "xmark.circle.fill")
+                            })
+                        }
+                    }
                 }
             }
         } else {
@@ -91,16 +105,6 @@ public struct SettingStack: View {
         .onReceive(settingViewModel.regeneratePaths) { _ in
             let paths = settingPage.generatePaths()
             settingViewModel.paths = paths
-        }
-    }
-
-    @ToolbarContentBuilder
-    func toolbarContent() -> some ToolbarContent {
-        ToolbarItem(placement: .principal) {
-            Text("Hi")
-        }
-        ToolbarItem(placement: .navigationBarTrailing) {
-            Text("Ho")
         }
     }
 }
