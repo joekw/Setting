@@ -26,15 +26,15 @@ public struct SettingStack: View {
      */
     public var customNoResultsView: AnyView?
 
-    public var showCloseButton: Bool = false
+    public var closeButton: Button<Image>?
 
     @StateObject var settingViewModel = SettingViewModel()
 
     /**
      Create a new Settings view from a `SettingPage`. The default "no results" view will be used.
      */
-    public init(showCloseButton: Bool = false, page: @escaping () -> SettingPage) {
-        self.showCloseButton = showCloseButton
+    public init(closeButton: Button<Image>? = nil, page: @escaping () -> SettingPage) {
+        self.closeButton = closeButton
         self.page = page
     }
 
@@ -56,13 +56,9 @@ public struct SettingStack: View {
             NavigationStack {
                 main
                 .toolbar {
-                    if showCloseButton {
+                    if let closeButton {
                         ToolbarItem(placement: .cancellationAction) {
-                            Button(action: {
-                                dismiss()
-                            }, label: {
-                                Image(systemName: "xmark.circle.fill")
-                            })
+                            closeButton
                         }
                     }
                 }
