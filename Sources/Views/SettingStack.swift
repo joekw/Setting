@@ -27,13 +27,14 @@ public struct SettingStack: View {
     public var customNoResultsView: AnyView?
 
     public var closeButton: (() -> Button<Image>)?
+    public var closeButtonColor: Color?
 
     @StateObject var settingViewModel = SettingViewModel()
 
     /**
      Create a new Settings view from a `SettingPage`. The default "no results" view will be used.
      */
-    public init(closeButton: (() -> Button<Image>)? = nil, page: @escaping () -> SettingPage) {
+    public init(closeButton: (() -> Button<Image>)? = nil, closeButtonColor: Color? = nil, page: @escaping () -> SettingPage) {
         self.closeButton = closeButton
         self.page = page
     }
@@ -59,6 +60,7 @@ public struct SettingStack: View {
                     if let closeButton {
                         ToolbarItem(placement: .cancellationAction) {
                             closeButton()
+                                .tint(closeButtonColor ?? .accentColor)
                         }
                     }
                 }
