@@ -20,7 +20,9 @@ public struct SettingButton: View, Setting {
     public var verticalPadding = CGFloat(14)
     public var horizontalPadding = CGFloat(16)
     public var icon: SettingIcon?
+    public var showProgressIndicator = false
     public var action: () -> Void
+
 
     public init(
         id: AnyHashable? = nil,
@@ -31,6 +33,7 @@ public struct SettingButton: View, Setting {
         verticalPadding: CGFloat = CGFloat(14),
         horizontalPadding: CGFloat = CGFloat(16),
         icon: SettingIcon? = nil,
+        showProgressIndicator: Bool = false,
         action: @escaping () -> Void
     ) {
         self.id = id
@@ -41,6 +44,7 @@ public struct SettingButton: View, Setting {
         self.verticalPadding = verticalPadding
         self.horizontalPadding = horizontalPadding
         self.icon = icon
+        self.showProgressIndicator = showProgressIndicator
         self.action = action
     }
 
@@ -53,6 +57,7 @@ public struct SettingButton: View, Setting {
             horizontalSpacing: horizontalSpacing,
             verticalPadding: verticalPadding,
             horizontalPadding: horizontalPadding,
+            showProgressIndicator: showProgressIndicator,
             action: action
         )
     }
@@ -66,6 +71,7 @@ struct SettingButtonView: View {
     var horizontalSpacing = CGFloat(12)
     var verticalPadding = CGFloat(14)
     var horizontalPadding = CGFloat(16)
+    var showProgressIndicator = false
     var action: () -> Void
 
     var body: some View {
@@ -80,7 +86,9 @@ struct SettingButtonView: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.vertical, verticalPadding)
 
-                if let indicator {
+                if showProgressIndicator {
+                    ProgressView()
+                } else if let indicator {
                     Image(systemName: indicator)
                         .foregroundColor(indicatorColor)
                 }
