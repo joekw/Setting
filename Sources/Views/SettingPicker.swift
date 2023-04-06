@@ -189,12 +189,8 @@ struct SettingPickerView: View {
                     }
                 }
                 .pickerStyle(.menu)
-                #if os(iOS)
-                    .padding(.trailing, -horizontalPadding + 2)
-                #else
-                    .padding(.trailing, -2)
-                #endif
-                    .tint(SettingTheme.secondaryLabelColor)
+                .padding(.trailing, -horizontalPadding + 2)
+                .tint(SettingTheme.secondaryLabelColor)
             }
             .padding(.horizontal, horizontalPadding)
             .accessibilityElement(children: .combine)
