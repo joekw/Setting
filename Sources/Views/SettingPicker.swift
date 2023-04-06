@@ -192,7 +192,7 @@ struct SettingPickerView: View {
                 #if os(iOS)
                     .padding(.trailing, -horizontalPadding + 2)
                 #else
-                    .padding(.trailing, horizontalPadding)
+                    .padding(.horizontal, horizontalPadding)
                 #endif
                     .tint(SettingTheme.secondaryLabelColor)
             }
