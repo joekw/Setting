@@ -75,7 +75,7 @@ public struct SettingStack: View {
                                     .font(.title2)
                                     .symbolRenderingMode(.hierarchical)
                                     .foregroundColor(closeButtonConfiguration.color)
-                            })
+                            }).buttonStyle(.borderless)
                         }
                     }
                 }
