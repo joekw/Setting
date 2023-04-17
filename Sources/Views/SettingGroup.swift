@@ -88,9 +88,7 @@ struct SettingGroupView<Content: View>: View {
                 content
             }
             .background {
-                if let backgroundColor {
-                    backgroundColor
-                }
+                backgroundColor
             }
             .cornerRadius(backgroundCornerRadius)
 
