@@ -84,6 +84,7 @@ public struct SettingStack: View {
             NavigationView {
                 main
             }
+            .navigationViewStyle(StackNavigationViewStyle())
         }
     }
 
