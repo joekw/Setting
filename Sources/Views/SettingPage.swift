@@ -140,7 +140,9 @@ struct SettingPageView<Content>: View where Content: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.vertical, verticalPadding)
             }
+         #if !os(xrOS)
             .scrollDismissesKeyboard(.interactively)
+         #endif
             .background(backgroundColor)
             .navigationTitle(title)
         } else {
