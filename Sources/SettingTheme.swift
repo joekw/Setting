@@ -13,7 +13,7 @@ import SwiftUI
  */
 public enum SettingTheme {
     public static var labelColor: Color = {
-        #if os(iOS)
+        #if os(iOS) || os(visionOS)
             return Color(uiColor: .label)
         #else
             return Color(nsColor: .labelColor)
@@ -21,7 +21,7 @@ public enum SettingTheme {
     }()
 
     public static var secondaryLabelColor: Color = {
-        #if os(iOS)
+        #if os(iOS) || os(visionOS)
             return Color(uiColor: .secondaryLabel)
         #else
             return Color(nsColor: .secondaryLabelColor)
@@ -29,7 +29,7 @@ public enum SettingTheme {
     }()
 
     public static var backgroundColor: Color = {
-        #if os(iOS)
+        #if os(iOS) || os(visionOS)
             return Color(uiColor: .systemBackground)
         #else
             return Color(nsColor: .textBackgroundColor)
@@ -37,7 +37,7 @@ public enum SettingTheme {
     }()
 
     public static var secondaryBackgroundColor: Color = {
-        #if os(iOS)
+        #if os(iOS) || os(visionOS)
             return Color(uiColor: .secondarySystemBackground)
         #else
             return Color(nsColor: .windowBackgroundColor)
