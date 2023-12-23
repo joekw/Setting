@@ -56,11 +56,16 @@ struct SettingDividedVStackLayout: _VariadicView_UnaryViewRoot {
                 if child.id != last {
                     Divider()
                         .opacity(dividerColor == nil ? 1 : 0)
+                    #if os(visionOS)
+                        .background(.thinMaterial)
+                    #else
                         .overlay {
                             if let dividerColor {
                                 dividerColor
                             }
                         }
+                    #endif
+
                         .padding(.leading, leadingMargin)
                         .padding(.trailing, trailingMargin)
                 }
