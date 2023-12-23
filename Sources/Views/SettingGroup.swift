@@ -91,6 +91,7 @@ struct SettingGroupView<Content: View>: View {
                 backgroundColor
             }
             .cornerRadius(backgroundCornerRadius)
+            .glassBackgroundEffect()
 
             if let footer {
                 Text(footer)
