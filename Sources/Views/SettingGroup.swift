@@ -87,11 +87,14 @@ struct SettingGroupView<Content: View>: View {
             ) {
                 content
             }
+#if os(visionOS)
+            .background(.regularMaterial)
+#else
             .background {
                 backgroundColor
             }
+#endif
             .cornerRadius(backgroundCornerRadius)
-            .glassBackgroundEffect()
 
             if let footer {
                 Text(footer)
