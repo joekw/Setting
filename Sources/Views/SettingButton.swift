@@ -14,6 +14,7 @@ import SwiftUI
 public struct SettingButton: View, Setting {
     public var id: AnyHashable?
     public var title: String
+    public var value: String? = nil
     public var indicator: String? = "arrow.up.forward"
     public var indicatorColor: Color = SettingTheme.secondaryLabelColor
     public var horizontalSpacing = CGFloat(12)
@@ -27,6 +28,7 @@ public struct SettingButton: View, Setting {
     public init(
         id: AnyHashable? = nil,
         title: String,
+        value: String? = nil,
         indicator: String? = "arrow.up.forward",
         indicatorColor: Color = SettingTheme.secondaryLabelColor,
         horizontalSpacing: CGFloat = CGFloat(12),
@@ -38,6 +40,7 @@ public struct SettingButton: View, Setting {
     ) {
         self.id = id
         self.title = title
+        self.value = value
         self.indicator = indicator
         self.indicatorColor = indicatorColor
         self.horizontalSpacing = horizontalSpacing
@@ -51,6 +54,7 @@ public struct SettingButton: View, Setting {
     public var body: some View {
         SettingButtonView(
             title: title,
+            value: value,
             icon: icon,
             indicator: indicator,
             indicatorColor: indicatorColor,
@@ -65,6 +69,7 @@ public struct SettingButton: View, Setting {
 
 struct SettingButtonView: View {
     let title: String
+    var value: String?
     var icon: SettingIcon?
     var indicator: String? = "arrow.up.forward"
     var indicatorColor: Color = SettingTheme.secondaryLabelColor
@@ -91,6 +96,12 @@ struct SettingButtonView: View {
                 } else if let indicator {
                     Image(systemName: indicator)
                         .foregroundColor(indicatorColor)
+                } else if let value {
+                    Text(value)
+                        .foregroundColor(.secondary)
+                        .fixedSize(horizontal: false, vertical: true)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.vertical, verticalPadding)
                 }
             }
             .padding(.horizontal, horizontalPadding)
