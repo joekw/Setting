@@ -99,8 +99,6 @@ struct SettingButtonView: View {
                 } else if let value {
                     Text(value)
                         .foregroundColor(.secondary)
-                        .fixedSize(horizontal: false, vertical: true)
-                        .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.vertical, verticalPadding)
                 }
             }
