@@ -80,38 +80,30 @@ struct SettingButtonView: View {
     var action: () -> Void
 
     var body: some View {
-        ZStack {
-            Button(action: action) {
-                HStack(spacing: horizontalSpacing) {
-                    if let icon {
-                        SettingIconView(icon: icon)
-                    }
-
-                    Text(title)
-                        .fixedSize(horizontal: false, vertical: true)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(.vertical, verticalPadding)
-
-                    if showProgressIndicator {
-                        ProgressView()
-                    } else if let indicator {
-                        Image(systemName: indicator)
-                            .foregroundColor(indicatorColor)
-                    }
+        Button(action: action) {
+            HStack(spacing: horizontalSpacing) {
+                if let icon {
+                    SettingIconView(icon: icon)
                 }
-                .padding(.horizontal, horizontalPadding)
-                .accessibilityElement(children: .combine)
-            }
-            .buttonStyle(.row)
 
-            if let value {
-                HStack {
-                    Spacer()
+                Text(title)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.vertical, verticalPadding)
+
+                if showProgressIndicator {
+                    ProgressView()
+                } else if let indicator {
+                    Image(systemName: indicator)
+                        .foregroundColor(indicatorColor)
+                } else if let value {
                     Text(value)
                         .foregroundColor(.secondary)
-                        .padding(.vertical, verticalPadding)
                 }
             }
+            .padding(.horizontal, horizontalPadding)
+            .accessibilityElement(children: .combine)
         }
+        .buttonStyle(.row)
     }
 }
