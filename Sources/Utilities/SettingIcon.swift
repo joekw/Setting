@@ -38,7 +38,7 @@ public struct SettingIconView: View {
                 .frame(width: 30, height: 30)
                 .background(
                     LinearGradient(
-                        gradient: Gradient(colors: [backgroundColor, backgroundColor.opacity(0.7)]),
+                        gradient: Gradient(colors: [backgroundColor, backgroundColor.opacity(0.75)]),
                         startPoint: .top,
                         endPoint: .bottom
                     )
