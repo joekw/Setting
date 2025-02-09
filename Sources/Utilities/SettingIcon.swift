@@ -43,7 +43,7 @@ public struct SettingIconView: View {
                         endPoint: .bottom
                     )
                 )
-                .cornerRadius(10)
+                .cornerRadius(8)
 
         case .image(let name, let inset, let foregroundColor, let backgroundColor):
             if let foregroundColor {
