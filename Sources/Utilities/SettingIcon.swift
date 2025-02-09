@@ -35,9 +35,15 @@ public struct SettingIconView: View {
             Image(systemName: icon)
                 .foregroundColor(foregroundColor)
                 .font(.footnote)
-                .frame(width: 28, height: 28)
-                .background(backgroundColor)
-                .cornerRadius(6)
+                .frame(width: 30, height: 30)
+                .background(
+                    LinearGradient(
+                        gradient: Gradient(colors: [backgroundColor, backgroundColor.opacity(0.7)]),
+                        startPoint: .top,
+                        endPoint: .bottom
+                    )
+                )
+                .cornerRadius(10)
 
         case .image(let name, let inset, let foregroundColor, let backgroundColor):
             if let foregroundColor {
