@@ -73,8 +73,8 @@ public struct SettingStack: View {
                             }, label: {
                                 Image(systemName: closeButtonConfiguration.imageName)
                                     .font(.title2)
-                                    .symbolRenderingMode(.hierarchical)
-                                    .foregroundColor(closeButtonConfiguration.color)
+                                    .symbolRenderingMode(.palette)
+                                    .foregroundStyle(.white, closeButtonConfiguration.color)
                             }).buttonStyle(.borderless)
                         }
                     }
