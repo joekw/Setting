@@ -64,7 +64,7 @@ public struct SettingPicker: View, Setting {
         public var groupBackgroundColor = SettingTheme.backgroundColor
         public var groupBackgroundCornerRadius = CGFloat(12)
         public var groupDividerLeadingMargin = CGFloat(16)
-        public var groupDividerTrailingMargin = CGFloat(0)
+        public var groupDividerTrailingMargin = CGFloat(16)
         public var groupDividerColor: Color?
 
         public init(
@@ -78,7 +78,7 @@ public struct SettingPicker: View, Setting {
             groupBackgroundColor: Color = SettingTheme.backgroundColor,
             groupBackgroundCornerRadius: CGFloat = CGFloat(12),
             groupDividerLeadingMargin: CGFloat = CGFloat(16),
-            groupDividerTrailingMargin: CGFloat = CGFloat(0),
+            groupDividerTrailingMargin: CGFloat = CGFloat(16),
             groupDividerColor: Color? = nil
         ) {
             self.verticalPadding = verticalPadding

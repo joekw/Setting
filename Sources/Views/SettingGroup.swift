@@ -19,7 +19,7 @@ public struct SettingGroup: Setting {
     public var backgroundColor = SettingTheme.backgroundColor
     public var backgroundCornerRadius = CGFloat(12)
     public var dividerLeadingMargin = CGFloat(16)
-    public var dividerTrailingMargin = CGFloat(0)
+    public var dividerTrailingMargin = CGFloat(16)
     public var dividerColor: Color?
     @SettingBuilder public var tuple: SettingTupleView
 
@@ -31,7 +31,7 @@ public struct SettingGroup: Setting {
         backgroundColor: Color = SettingTheme.backgroundColor,
         backgroundCornerRadius: CGFloat = CGFloat(12),
         dividerLeadingMargin: CGFloat = CGFloat(16),
-        dividerTrailingMargin: CGFloat = CGFloat(0),
+        dividerTrailingMargin: CGFloat = CGFloat(16),
         dividerColor: Color? = nil,
         @SettingBuilder tuple: () -> SettingTupleView
     ) {
@@ -56,7 +56,7 @@ struct SettingGroupView<Content: View>: View {
     var backgroundColor = SettingTheme.backgroundColor
     var backgroundCornerRadius = CGFloat(12)
     var dividerLeadingMargin = CGFloat(16)
-    var dividerTrailingMargin = CGFloat(0)
+    var dividerTrailingMargin = CGFloat(16)
     var dividerColor: Color?
     @ViewBuilder var content: Content
 
