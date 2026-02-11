@@ -49,6 +49,7 @@ public struct SettingGroup: Setting {
 }
 
 struct SettingGroupView<Content: View>: View {
+    @Environment(\.settingGroupBackgroundColor) private var envBackgroundColor
     var icon: SettingIcon?
     var header: String?
     var footer: String?
@@ -59,6 +60,10 @@ struct SettingGroupView<Content: View>: View {
     var dividerTrailingMargin = CGFloat(16)
     var dividerColor: Color?
     @ViewBuilder var content: Content
+
+    private var resolvedBackgroundColor: Color {
+        envBackgroundColor ?? backgroundColor
+    }
 
     public var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -91,7 +96,7 @@ struct SettingGroupView<Content: View>: View {
             .background(.regularMaterial)
 #else
             .background {
-                backgroundColor
+                resolvedBackgroundColor
             }
 #endif
             .cornerRadius(backgroundCornerRadius)

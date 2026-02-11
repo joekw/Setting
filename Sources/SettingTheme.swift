@@ -9,6 +9,30 @@
 import SwiftUI
 
 /**
+ Environment keys for overriding Setting view colors from the host app.
+ When set, SettingPageView and SettingGroupView use these instead of their stored backgroundColor.
+ */
+private struct SettingPageBackgroundColorKey: EnvironmentKey {
+    static let defaultValue: Color? = nil
+}
+
+private struct SettingGroupBackgroundColorKey: EnvironmentKey {
+    static let defaultValue: Color? = nil
+}
+
+public extension EnvironmentValues {
+    var settingPageBackgroundColor: Color? {
+        get { self[SettingPageBackgroundColorKey.self] }
+        set { self[SettingPageBackgroundColorKey.self] = newValue }
+    }
+
+    var settingGroupBackgroundColor: Color? {
+        get { self[SettingGroupBackgroundColorKey.self] }
+        set { self[SettingGroupBackgroundColorKey.self] = newValue }
+    }
+}
+
+/**
  A collection of default color values.
  */
 public enum SettingTheme {
